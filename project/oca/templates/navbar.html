@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #121212; margin-bottom: 20px; border-bottom: 2px solid #00d1ff;">
+  <div class="container-fluid">
+      <!-- Logo Section
+      <a class="navbar-brand" href="#" style="font-weight: bold; color: #00d1ff; font-family: 'Orbitron', sans-serif; font-size: 1.5rem;">
+          Logo
+      </a> -->
+
+      <!-- Navbar Toggler for Mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="color: #00d1ff;"></span>
+      </button>
+
+      <!-- Navbar Links and Search Form -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  {% if user.is_authenticated %}
+                      <a class="nav-link active" href="{% url 'home' %}" style="color: #00d1ff; font-size: 1.1rem;">Dashboard</a>
+                  {% endif %}
+              </li>
+              <li class="nav-item">
+                  {% if user.is_authenticated %}
+                      <a class="nav-link active" href="{% url 'logout' %}" style="color: #00d1ff; font-size: 1.1rem;">Logout</a>
+                  {% else %}
+                      <a class="nav-link active" href="{% url 'login' %}" style="color: #00d1ff; font-size: 1.1rem;">Login</a>
+                  {% endif %}
+              </li>
+          </ul>
+
+          <!-- Search Form -->
+          <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="background-color: #333; border: 1px solid #00d1ff; color: #dcdcdc; border-radius: 20px; padding: 8px;">
+              <button class="btn btn-outline-light" type="submit" style="border-color: #00d1ff; color: #00d1ff; transition: all 0.3s ease;">Search</button>
+          </form>
+      </div>
+  </div>
+</nav>
+
+<!-- Additional CSS -->
+<style>
+  /* Navbar link hover effects */
+  .nav-link:hover {
+      color: #0098d6;
+      transform: scale(1.05);
+  }
+
+  /* Search button hover effect */
+  .btn-outline-light:hover {
+      background-color: #00d1ff;
+      color: #ffffff;
+      border-color: #0098d6;
+  }
+
+  /* Toggler icon styling */
+  .navbar-toggler-icon {
+      color: #00d1ff;
+  }
+</style>

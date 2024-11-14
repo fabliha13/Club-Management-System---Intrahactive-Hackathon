@@ -1,0 +1,162 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post" action="{% url 'login' %}" class="login-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+    </div>
+</main>
+
+{% block extra_styles %}
+<style>
+    /* Background gradient animation */
+    body {
+        background: linear-gradient(45deg, #121212, #2a2a2a, #00d1ff);
+        background-size: 400% 400%;
+        animation: gradientAnimation 10s ease infinite;
+        font-family: 'Roboto', sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Keyframe for animated gradient effect */
+    @keyframes gradientAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    /* Login container with modern glassmorphism effect */
+    .login-container {
+        position: relative;
+        background: rgba(0, 0, 0, 0.6); /* Dark glass effect */
+        padding: 40px 30px;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        width: 100%;
+        max-width: 450px;
+        text-align: center;
+        backdrop-filter: blur(10px); /* Glassmorphism effect */
+        z-index: 1;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    /* Title styles */
+    .login-container h2 {
+        color: #00d1ff; /* Electric cyan */
+        font-family: 'Orbitron', sans-serif; /* Futuristic font */
+        font-size: 3rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Input field styles */
+    .login-form .form-group {
+        margin-bottom: 20px;
+    }
+
+    .login-form .form-group input {
+        width: 100%;
+        padding: 14px;
+        margin: 8px 0;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 2px solid transparent;
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 500;
+        outline: none;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    /* Floating effect for input focus */
+    .login-form .form-group input:focus {
+        background: rgba(255, 255, 255, 0.25);
+        border: 2px solid #00d1ff;
+        transform: translateY(-5px); /* Floating effect */
+        box-shadow: 0 4px 15px rgba(0, 209, 255, 0.5);
+    }
+
+    /* Login button styles */
+    .login-btn {
+        width: 100%;
+        padding: 15px;
+        background-color: #00d1ff; /* Neon blue */
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+        letter-spacing: 1px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Button hover effect with glowing neon */
+    .login-btn:hover {
+        background-color: #00a3e0;
+        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3);
+        transform: scale(1.05);
+        animation: glowing 1.5s ease-in-out infinite alternate;
+    }
+
+    /* Button active state (slightly darker) */
+    .login-btn:active {
+        background-color: #0091c5;
+        transform: scale(0.98);
+    }
+
+    /* Glowing effect for button text */
+    @keyframes glowing {
+        0% {
+            text-shadow: 0 0 5px #00d1ff, 0 0 10px #00d1ff;
+        }
+        100% {
+            text-shadow: 0 0 20px #00d1ff, 0 0 30px #00a3e0;
+        }
+    }
+
+    /* Responsive design adjustments */
+    @media (max-width: 768px) {
+        .login-container {
+            padding: 25px;
+        }
+        
+        .login-container h2 {
+            font-size: 2rem;
+        }
+
+        .login-form .form-group input {
+            font-size: 1rem;
+        }
+    }
+
+</style>
+{% endblock %}
+{% endblock %}

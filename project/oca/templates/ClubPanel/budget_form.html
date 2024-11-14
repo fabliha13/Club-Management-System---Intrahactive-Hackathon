@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4 text-light" style="font-family: 'Orbitron', sans-serif;">Budget Management</h2>
+    
+    <form method="POST" class="p-4 border rounded shadow-sm bg-dark text-light">
+        {% csrf_token %}
+        
+        <!-- Event Selection -->
+        <div class="form-group mb-4">
+            <label for="event" class="form-label">Select Event</label>
+            <select id="event" name="event" class="form-control bg-dark text-light" required>
+                <option value="" disabled selected>Select an event</option>
+                {% for event in events %}
+                    <option value="{{ event.id }}">{{ event.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <!-- Amount Requested -->
+        <div class="form-group mb-4">
+            <label for="amount_requested" class="form-label">Amount Requested (₹)</label>
+            <input type="number" id="amount_requested" name="amount_requested" step="0.01" class="form-control bg-dark text-light" placeholder="Enter requested amount" required>
+        </div>
+        
+        
+        <!-- Status Selection -->
+        
+        
+        <!-- Budget Description -->
+        <div class="form-group mb-4">
+            <label for="budget_description" class="form-label">Budget Description</label>
+            <textarea id="budget_description" name="budget_description" class="form-control bg-dark text-light" rows="4" placeholder="Provide a detailed description of the budget..." required></textarea>
+        </div>
+        
+        <!-- Submit Button -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mt-3" style="background-color: #00d1ff; border: none; font-size: 1.1em;">
+                Submit Budget Request
+            </button>
+        </div>
+    </form>
+</div>
+
+{% block extra_styles %}
+<style>
+    /* Custom Button Hover */
+    .btn-primary:hover {
+        background-color: #0098d6;
+        box-shadow: 0 5px 20px rgba(0, 163, 224, 0.3);
+    }
+
+    /* Input fields focus effect */
+    .form-control:focus {
+        border-color: #00d1ff;
+        box-shadow: 0 0 5px rgba(0, 163, 224, 0.5);
+    }
+
+    /* Form container */
+    .container {
+        background-color: #343a40;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Heading style */
+    h2 {
+        color: #00d1ff;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /* Label styles */
+    .form-label {
+        color: #d1d1d1;
+        font-weight: bold;
+    }
+
+    /* Adjust button styling */
+    .btn-primary {
+        background-color: #00d1ff;
+        border: none;
+    }
+</style>
+{% endblock %}
+{% endblock %}

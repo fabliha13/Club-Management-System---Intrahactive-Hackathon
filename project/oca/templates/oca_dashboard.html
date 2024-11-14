@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4" style="color: #00d1ff; font-family: 'Orbitron', sans-serif; text-transform: uppercase;">
+        Welcome to the Office of Co-Curricular Activities (OCA)
+    </h2>
+
+    <div class="row">
+        {% for club in clubs %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-lg" style="background-color: #1e1e1e; border: 1px solid #00d1ff; border-radius: 15px;">
+                    <div class="card-body">
+                        <h3 class="card-title" style="color: #00d1ff; font-family: 'Orbitron', sans-serif; font-size: 1.5rem;">
+                            <a href="{% url 'club_detail' club.id %}" class="text-decoration-none" style="color: #00d1ff;">
+                                {{ club.club_name }}
+                            </a>
+                        </h3>
+                        <p class="card-text" style="color: #dcdcdc;">
+                            Explore and engage with the {{ club.club_name }}! Discover activities and connect with members.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 text-center">
+                        <a href="{% url 'club_detail' club.id %}" class="btn btn-primary submit-btn" style="background-color: #00d1ff;">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% block extra_styles %}
+<style>
+    /* Override General Styles for this Page */
+    body {
+        background-color: #121212;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /* Card Styling */
+    .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 209, 255, 0.2);
+    }
+
+    /* Title Styling */
+    h2 {
+        color: #00d1ff;
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
+
+    .submit-btn {
+        font-size: 1.1rem;
+        font-weight: bold;
+        padding: 8px 20px;
+        border-radius: 5px;
+        transition: all 0.4s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: #0098d6;
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 163, 224, 0.5);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        h2 {
+            font-size: 2rem;
+        }
+    }
+</style>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,99 @@
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCA</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /* Page Background and Typography */
+        body {
+            background-color: #121212;
+            color: #dcdcdc;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            color: #00d1ff; /* Neon blue */
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        /* Container Styling */
+        .container-custom {
+            padding: 4rem;
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            background-color: #00d1ff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0098d6;
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 163, 224, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    {% include 'navbar.html' %}
+
+    <div class="container-custom text-center my-5"> 
+        <h1>Welcome to Office of Co-Curricular Activities (OCA)</h1>
+        <!-- <p>{% lorem 2 b random %}</p> -->
+        
+        <div class="my-4">
+            <a href="https://www.bracu.ac.bd/campus-life/office-co-curricular-activities-oca#:~:text=The%20Office%20of%20Co%2DCurricular,the%20vision%20of%20the%20institution." class="btn btn-primary">Learn More</a>
+        </div>
+
+        {% if user.is_authenticated %}
+            <h2>Welcome, {{ user.username }}. Let's have fun</h2>
+        {% endif %}
+    </div>
+
+    {% include 'footer.html' %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+{% endblock %}

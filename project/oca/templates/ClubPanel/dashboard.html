@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid my-5">
+    <div class="row">
+        <!-- Sidebar Navigation -->
+        <div class="list-group text-center col-md-3 py-3" style="background-color: #1e1e1e; border: 2px solid #00d1ff;">
+            {% if user.is_authenticated %}
+                <h1 class="list-group-item list-group-item-action" style="background-color: #343a40; color: #00d1ff; font-weight: bold; border: none;">
+                    {{ user.username }}
+                </h1>
+                <a href="{% url 'home' %}" class="list-group-item list-group-item-action" style="background-color: #333; color: #dcdcdc; font-weight: bold;">
+                    Notifications
+                </a>
+                <a href="{% url 'event_management' %}" class="list-group-item list-group-item-action" style="background-color: #333; color: #dcdcdc; font-weight: bold;">
+                    Event Management
+                </a>
+                <a href="{% url 'room_booking' %}" class="list-group-item list-group-item-action" style="background-color: #333; color: #dcdcdc; font-weight: bold;">
+                    Room Booking
+                </a>
+                <a href="{% url 'budget_management' %}" class="list-group-item list-group-item-action" style="background-color: #333; color: #dcdcdc; font-weight: bold;">
+                    Budget Management
+                </a>
+                <a href="{% url 'messaging' %}" class="list-group-item list-group-item-action" style="background-color: #333; color: #dcdcdc; font-weight: bold;">
+                    Communication Hub
+                </a>
+            {% else %}
+                <p class="text-light">Please <a href="{% url 'login' %}" style="color: #00d1ff;">log in</a> to access the dashboard features.</p>
+            {% endif %}
+        </div>
+        
+        <!-- Notifications Main Content -->
+        <div class="text-center col-md-9 rounded p-5" style="background-color: #2a2a2a; color: #dcdcdc; border: 2px solid #00d1ff;">
+            <h2 class="mb-4" style="color: #00d1ff; font-family: 'Orbitron', sans-serif;">Notifications</h2>
+            <p class="lead" style="color: #aaa;">This is your notifications page. No new notifications at the moment.</p>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</div>
+
+{% block extra_styles %}
+<style>
+    /* Sidebar link hover effect */
+    .list-group-item-action:hover {
+        background-color: #444;
+        color: #00d1ff;
+    }
+
+    /* Button hover effect */
+    .btn-primary:hover {
+        background-color: #0098d6;
+        box-shadow: 0 5px 20px rgba(0, 163, 224, 0.5);
+    }
+</style>
+{% endblock %}
+{% endblock %}

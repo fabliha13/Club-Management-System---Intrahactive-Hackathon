@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4 text-light" style="font-family: 'Orbitron', sans-serif;">Add New Event</h2>
+    
+    <form method="POST" class="p-4 border rounded shadow-sm bg-dark text-light">
+        {% csrf_token %}
+
+        <!-- Title -->
+        <div class="form-group mb-4">
+            <label for="title" class="form-label">Event Title</label>
+            <input type="text" id="title" name="title" class="form-control bg-dark text-light" placeholder="Enter event title" required>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group mb-4">
+            <label for="description" class="form-label">Event Description</label>
+            <textarea id="description" name="description" class="form-control bg-dark text-light" rows="4" placeholder="Enter event description"></textarea>
+        </div>
+
+        <!-- Start Date -->
+        <div class="form-group mb-4">
+            <label for="start_date" class="form-label">Start Date & Time</label>
+            <input type="datetime-local" id="start_date" name="start_date" class="form-control bg-dark text-light" required>
+        </div>
+
+        <!-- End Date -->
+        <div class="form-group mb-4">
+            <label for="end_date" class="form-label">End Date & Time</label>
+            <input type="datetime-local" id="end_date" name="end_date" class="form-control bg-dark text-light" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mt-3" style="background-color: #00d1ff; border: none; font-size: 1.1em;">
+                Add Event
+            </button>
+        </div>
+    </form>
+</div>
+
+{% block extra_styles %}
+<style>
+    /* Custom Button Hover */
+    .btn-primary:hover {
+        background-color: #0098d6;
+        box-shadow: 0 5px 20px rgba(0, 163, 224, 0.3);
+    }
+
+    /* Input fields focus effect */
+    .form-control:focus {
+        border-color: #00d1ff;
+        box-shadow: 0 0 5px rgba(0, 163, 224, 0.5);
+    }
+
+    /* Form container */
+    .container {
+        background-color: #343a40;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Heading style */
+    h2 {
+        color: #00d1ff;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /* Label styles */
+    .form-label {
+        color: #d1d1d1;
+        font-weight: bold;
+    }
+
+    /* Adjust button styling */
+    .btn-primary {
+        background-color: #00d1ff;
+        border: none;
+    }
+</style>
+{% endblock %}
+{% endblock %}
